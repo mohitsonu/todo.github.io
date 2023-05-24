@@ -5,11 +5,11 @@ const app = express();
 
 var arrayitem = [];
 
+app.use(express.static("public"));
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.use(express.static("public"));
 ``
 app.get("/", function (req, res) {
 
@@ -21,11 +21,9 @@ app.get("/", function (req, res) {
         weekday: "long",
         month: "long",
         year: "numeric",
-        // timeZone: "IST",
     };
 
     var day = today.toLocaleDateString("en-in", options);
-    // var day = today.toLocaleTimeString("en-US", options);
 
     res.render("list", { daytype: day, newlistitems: arrayitem});
 });

@@ -67,15 +67,18 @@ button.add{
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
-  border-color: transparent;
   background-color: #A683E3;
+  border-color: transparent;
   color: #fff;
   font-size: 40px;
   /* padding-bottom: 6px; */
   border-width: 0;
 }
 button.delete{
-margin-left: auto;
+  /* margin-left: auto; */
+  padding: 0 0px;
+  border: none;
+  background-color: #ffffff;
 }
 
 input[type="text"] {
