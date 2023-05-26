@@ -12,28 +12,24 @@
 
 <body>
     <% if (error) { %>
-    <script>
-        alert("<%= error %>");
-    </script>
+        <script>
+            alert("<%= error %>");
+        </script>
     <% } %>
-    <!-- <br> -->
-    <!-- <br> -->
-    
     <h1 class="title"><b><u> ToDo List</u>📝</b></h1>
-    
     <div class="box" id="heading">
         <h1><%= daytype %></h1>
     </div>
 
     <div class="box">
         <% for (var i = 0; i < newlistitems.length; i++) { %>
-        <form class="item" method="post" action="/delete-task">
-            <input class="check" type="checkbox">
-            <p class="tasks"><%= newlistitems[i] %></p>
+            <form class="item" method="post" action="/delete-task">
+                <input class="check" type="checkbox">
+                <p class="tasks"><%= newlistitems[i] %></p>
 
-            <input type="hidden" name="task" value="<%= newlistitems[i] %>">
-            <button class="delete" type="submit"><img src="/images/d.png" height="50px" width="50px" alt="d"></button>
-        </form>
+                <input type="hidden" name="task" value="<%= newlistitems[i] %>">
+                <button class="delete" type="submit"><img src="/images/d.png" height="50px" width="50px" alt="d"></button>
+            </form>
         <% } %>
         <form class="item" action="/add-task" method="post">
             <input type="text" name="newitems" placeholder="New Task" autocomplete="off">
