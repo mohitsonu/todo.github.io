@@ -6,14 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
-    <title>TODO</title>
+    <title>TODO List</title>
     <link rel="shortcut icon" href="/images/fav.png" type="image/x-icon">
 </head>
 
 <body>
-
+    <% if (error) { %>
+    <script>
+        alert("<%= error %>");
+    </script>
+    <% } %>
+    <!-- <br> -->
+    <!-- <br> -->
+    
+    <h1 class="title"><b><u> ToDo List</u>📝</b></h1>
+    
     <div class="box" id="heading">
-        <h1> <%= daytype %> </h1>
+        <h1><%= daytype %></h1>
     </div>
 
     <div class="box">
@@ -22,15 +31,14 @@
             <input class="check" type="checkbox">
             <p class="tasks"><%= newlistitems[i] %></p>
 
-            <input type="text" value="<%= newlistitems[i] %>" name="task" style='display:none;'/>
-            <button class="delete" type="submit"><img src="/images/d.png" height="50px" width="50px"  alt="d"></button> 
+            <input type="hidden" name="task" value="<%= newlistitems[i] %>">
+            <button class="delete" type="submit"><img src="/images/d.png" height="50px" width="50px" alt="d"></button>
         </form>
         <% } %>
-        <form class="item" action="/" method="post">
-            <input type="text" name="newitems" placeholder="New Task" autocomplete="off" >
+        <form class="item" action="/add-task" method="post">
+            <input type="text" name="newitems" placeholder="New Task" autocomplete="off">
             <button class="add" type="submit" name="button">+</button>
         </form>
-
     </div>
 
 </body>
