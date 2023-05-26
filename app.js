@@ -1,9 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
+const crypto = require("crypto");
 
 const app = express();
-const secretKey = process.env.SECRET_KEY || "your-secret-key";
 
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
   session({
-    secret: secretKey,
+    secret: generateRandomKey(),
     resave: false,
     saveUninitialized: true,
   })
@@ -69,3 +69,8 @@ app.post("/delete-task", function (req, res) {
 app.listen(4000, function () {
   console.log("server started at port 4000");
 });
+
+// Function to generate a random secret key
+function generateRandomKey() {
+  return crypto.randomBytes(32).toString("hex");
+}
