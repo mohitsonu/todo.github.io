@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
-const arrayitem = [];
+var arrayitem = [];
 
 
 app.use(express.static("public"));
